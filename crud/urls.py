@@ -1,13 +1,11 @@
-from django.contrib import admin
-from django.urls import include, path
-
-
+from django.urls import path
 from . import views
-
 app_name = 'crud'
 urlpatterns = [
-    path("", views.IndexView.as_view(), name="index"),
-    path("<int:pk>/", views.DetailView.as_view(), name="detail"),
-    path("<int:pk>/results/", views.ResultsView.as_view(), name="results"),
-    path('<int:question_id>/votes/', views.votes, name='votes'),
+    path("question/", views.Question_list.as_view(), name="question_list"),
+    path("choice/", views.choice_list, name="choice_list"),
+    path("post_choice/", views.choice_list, name="choice_list"),
+    path("question/<int:pk>", views.Question_detail.as_view(), name="question_detail"),
+    path("vote/<int:pk>", views.vote, name="vote"),
+
 ]
